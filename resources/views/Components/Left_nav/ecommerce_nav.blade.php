@@ -12,21 +12,19 @@
             Products
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{route('product-details')}}" class="nav-link" data-key="t-product-Details">
-            Product Details
-          </a>
-        </li>
+        <!-- Add Product -->
         <li class="nav-item">
           <a href="{{route('add-product')}}" class="nav-link" data-key="t-create-product">
             Add Product
           </a>
         </li>
+        <!-- Order Product -->
         <li class="nav-item">
           <a href="{{route('orders')}}" class="nav-link" data-key="t-orders">
             Orders
           </a>
         </li>
+        <!-- Order-details -->
         <li class="nav-item">
           <a href="{{route('order-details')}}" class="nav-link" data-key="t-order-details">
             Order Details

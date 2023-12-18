@@ -30,9 +30,9 @@ Route::group(["prefix" => "admin"], function () {
     
     Route::get("/products", [ProductsController::class, "Products"])->name('products');
     // Single Product Show
-    Route::get("/product-details", [ProductsController::class, "ProductDetails"])->name('product-details');
+     Route::get("/product-details/{id}", [ProductsController::class, "ProductDetails"])->name('product.details');
     // Single product Delete
-    Route::delete("/product/{id)", [ProductsController::class, "Destroy"])->name('product-destroy');
+    Route::delete("/product-destroy/{id)", [ProductsController::class, "Destroy"])->name('product.destroy');
 
 
 

@@ -420,8 +420,9 @@
                                                                                         alt="" class="img-fluid d-block">
                                                                                 </div>
                                                                             </div>
+                                                                            <!-- Product Details Link by product heading -->
                                                                             <div class="flex-grow-1">
-                                                                                <h5 class="fs-14 mb-1"><a href="{{route('product-details')}}"
+                                                                                <h5 class="fs-14 mb-1"><a href="{{route('product.details', $product->id)}}"
                                                                                         class="text-body">{{$product->title}}</a>
                                                                                 </h5>
                                                                                 Category : <span class="fw-medium">{{$product->categoryName}}</span>
@@ -453,16 +454,17 @@
                                                                             </button>
                                                                             <ul class="dropdown-menu dropdown-menu-end">
                                                                                 <li>
-                                                                                    <a class="dropdown-item" href="{{route('product-details')}}"><i
+                                                                                    <a class="dropdown-item" href="{{route('product.details', $product->id)}}"><i
                                                                                             class="ri-eye-fill align-bottom me-2 text-muted"></i>View</a>
                                                                                 </li>
                                                                                 <li><a class="dropdown-item edit-list" data-edit-id="1" href="apps-ecommerce-add-product.html"><i
                                                                                             class="ri-pencil-fill align-bottom me-2 text-muted"></i>Edit</a>
                                                                                 </li>
                                                                                 <li class="dropdown-divider"></li>
+                                                                                
+                                                                                <!-- Product Delete -->
                                                                                 <li class="text-center">
-                                                                                    <form method="POST" action="{{route('product-destroy')}}">
-
+                                                                                    <form method="POST" action="{{route('product.destroy', $product->id )}}">
                                                                                         @csrf
                                                                                         @method('DELETE')
                                                                                         <button type="submit" class="btn btn-danger ">Delete</button>
