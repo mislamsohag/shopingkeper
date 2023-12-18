@@ -2,6 +2,8 @@
 
 
 use App\Http\Controllers\Admin\EcomController;
+use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Upload\ProductUploadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
@@ -14,8 +16,6 @@ Route::get("/", [HomeController::class, "Home"])->name('home');
 Route::get("/home", [HomeController::class, "Home"])->name('home');
 
 
-
-
 Route::group(["prefix" => "admin"], function () {    
     Route::get("/", [HomeController::class, "Home"]);
     Route::get("/analytics", [DashboardController::class, "DashboardAnalytics"])->name('dashboard.analytics'); 
@@ -24,16 +24,15 @@ Route::group(["prefix" => "admin"], function () {
 
 
     //Ecommarce Rotues
-    Route::get("/add-product", [EcomController::class, "AddProductShow"])->name('add-product');    
-    Route::post("/add-product", [EcomController::class, "ProductStore"])->name('product-store');
+    Route::get("/add-product", [ProductUploadController::class, "AddProductShow"])->name('add-product');    
+    Route::post("/add-product", [ProductUploadController::class, "ProductStore"])->name('product-store');
         
     
-    Route::get("/products", [EcomController::class, "Products"])->name('products');
+    Route::get("/products", [ProductsController::class, "Products"])->name('products');
     // Single Product Show
-    Route::get("/product-details", [EcomController::class, "ProductDetails"])->name('product-details');
-
-    // Single product Deleta
-    Route::delete("/product", [EcomController::class, "Destroy"])->name('product-destroy');
+    Route::get("/product-details", [ProductsController::class, "ProductDetails"])->name('product-details');
+    // Single product Delete
+    Route::delete("/product/{id)", [ProductsController::class, "Destroy"])->name('product-destroy');
 
 
 

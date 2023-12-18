@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
-            $table->string('img1',200);
-            $table->string('img2',200);
-            $table->string('img3',200);
-            $table->string('img4',200);
+            $table->string('img1');
+            $table->string('img2')->nullable();
+            $table->string('img3')->nullable();
+            $table->string('img4')->nullable();
             $table->longText('desc');
             $table->string('color',50);
             $table->string('size', 10);
             //F-key
-            $table->unsignedBigInteger('product_id')->unique();
+            $table->unsignedBigInteger('product_id')->unique()->nullable();
             //Relation
             $table->foreign('product_id')->references('id')->on('products')->restrictOnDelete()->cascadeOnUpdate();            
+            
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

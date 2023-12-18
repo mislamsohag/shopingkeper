@@ -24,8 +24,8 @@ return new class extends Migration
             $table->enum('remark', ['popular', 'new', 'top', 'special', 'tranding', 'regular']);
 
             //F-key
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
 
             //Relation
             $table->foreign('category_id')->references('id')->on('categories')->restrictOnDelete()->cascadeOnUpdate();

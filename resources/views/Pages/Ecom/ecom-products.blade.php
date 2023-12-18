@@ -416,7 +416,7 @@
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="flex-shrink-0 me-3">
                                                                                 <div class="avatar-sm bg-light rounded p-1">
-                                                                                    <img src="{{$product->image}}"
+                                                                                    <img src="{{asset($product->image)}}"
                                                                                         alt="" class="img-fluid d-block">
                                                                                 </div>
                                                                             </div>

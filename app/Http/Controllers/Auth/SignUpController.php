@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 class SignUpController extends Controller
 {
     public function SignUp(){
+        
         return view('Pages.Auth.auth-signup-basic');
     }
     public function SignUpPost(Request $request){
@@ -30,7 +31,7 @@ class SignUpController extends Controller
        if(!$user){
            return redirect(route('sign-up'))->with('error', 'Ragistration Failed!, plase try again.');
         }else{
-            return redirect(route('home'))->with('success', 'Login is Done!');
+            return redirect(route('login'))->with('success', 'Login is Done!');
         }
     }  
     

@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('product_reviews', function (Blueprint $table) {
             $table->id();
             $table->string('description',1000);
-            $table->string('email',70);
             //F-key
-            $table->unsignedBigInteger('product_id')->unique();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('product_id')->unique()->nullable();
             //Relation
-            $table->foreign('email')->references('email')->on('profiles')->restrictOnDelete()->cascadeOnUpdate();            
+            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->cascadeOnUpdate();            
             $table->foreign('product_id')->references('id')->on('products')->restrictOnDelete()->cascadeOnUpdate();            
+           
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

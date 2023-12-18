@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('color',50);
             $table->string('size',10);
             //F-key
-            $table->string('email',70);
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();
             //Relation
-            $table->foreign('email')->references('email')->on('profiles')->restrictOnDelete()->cascadeOnUpdate();            
+            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->cascadeOnUpdate();            
             $table->foreign('product_id')->references('id')->on('products')->restrictOnDelete()->cascadeOnUpdate();            
+            
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

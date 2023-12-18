@@ -47,7 +47,7 @@
                                     <div>
                                         <label>Product Description</label>
                                         <div id="ckeditor-classic">
-                                            <textarea name="short_des" cols="50" rows="5"></textarea>
+                                            <textarea name="short_desc" cols="50" rows="5"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -86,36 +86,70 @@
                                             <div class="row">
 
                                                 <!-- categories Name -->
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="manufacturer-name-input">Category</label>
-                                                        
-                                                        <input name="category" type="text" class="form-control" id="manufacturer-name-input" placeholder="Enter category">
-                                                        @error('category')
-                                                        <p class="text-danger">{{$message}}</p>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <!-- brand Name -->
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="manufacturer-brand-input">Brand Name</label>
-                                                        
-                                                        <input name="brand" type="text" class="form-control" id="manufacturer-brand-input" placeholder="Enter brand name">
-                                                        @error('brand')
-                                                        <p class="text-danger">{{$message}}</p>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
                                                 <!-- Stocks -->
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-3 col-sm-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="manufacturer-brand-input">Product Stock</label>
+                                                        <label class="form-label" for="manufacturer-brand-input">Stock</label>
                                                         
                                                         <input name="stock" type="text" class="form-control" id="manufacturer-brand-input" placeholder="Product Stock">
                                                         @error('stock')
+                                                        <p class="text-danger">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="category_id">Category Id</label>
+                                                        
+                                                        <select name="category_id">
+                                                            <option value="1">Food</option>
+                                                            <option value="2">Fashion</option>
+                                                            <option value="3">Furniture</option>
+                                                            <option value="4">Grocery</option>
+                                                            <option value="5">Cosmatics</option>
+                                                            <option value="6">Electronics</option>
+                                                        </select>
+
+                                                        @error('category_id')
+                                                        <p class="text-danger">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- brand Id -->
+                                                <div class="col-lg-3 col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="manufacturer-brand-input">Brand Id</label>
+                                                        
+                                                        <select name="brand_id">
+                                                            <option value="1">Pran</option>
+                                                            <option value="2">Easy</option>
+                                                            <option value="3">Otobi</option>
+                                                            <option value="4">ACR</option>
+                                                            <option value="5">Kohinoor</option>
+                                                            <option value="6">Wolton</option>
+                                                        </select>
+                                                        
+                                                        @error('brand_id')
+                                                        <p class="text-danger">{{$message}}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <div class="col-lg-3 col-sm-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="manufacturer-brand-input">Remak</label>
+                                                        
+                                                        <select name="remark">
+                                                            <option value="new">New</option>
+                                                            <option value="popular">Popular</option>
+                                                            <option value="top">Top</option>
+                                                            <option value="special">Special</option>
+                                                            <option value="tranding">Tranding</option>
+                                                        </select>
+                                                        @error('remark')
                                                         <p class="text-danger">{{$message}}</p>
                                                         @enderror
                                                     </div>

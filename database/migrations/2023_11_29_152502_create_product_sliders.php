@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('title',300);
             $table->string('image',200);
             //F-key
-            $table->unsignedBigInteger('product_id')->unique();
+            $table->unsignedBigInteger('product_id')->unique()->nullable();
             //Relation
             $table->foreign('product_id')->references('id')->on('products')->restrictOnDelete()->cascadeOnUpdate();            
+            
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
