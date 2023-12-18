@@ -1,13 +1,13 @@
 <?php
 
 
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\SignUpController;
+use App\Http\Controllers\Admin\EcomController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\Admin\DashboardController;
 
 Route::get("/", [HomeController::class, "Home"])->name('home');
@@ -24,27 +24,27 @@ Route::group(["prefix" => "admin"], function () {
 
 
     //Ecommarce Rotues
-    Route::get("/add-product", [EcommerceController::class, "AddProductShow"])->name('add-product');    
-    Route::post("/add-product", [EcommerceController::class, "ProductStore"])->name('product-store');
+    Route::get("/add-product", [EcomController::class, "AddProductShow"])->name('add-product');    
+    Route::post("/add-product", [EcomController::class, "ProductStore"])->name('product-store');
         
     
-    Route::get("/products", [EcommerceController::class, "Products"])->name('products');
+    Route::get("/products", [EcomController::class, "Products"])->name('products');
     // Single Product Show
-    Route::get("/product-details", [EcommerceController::class, "ProductDetails"])->name('product-details');
+    Route::get("/product-details", [EcomController::class, "ProductDetails"])->name('product-details');
 
     // Single product Deleta
-    Route::delete("/product", [EcommerceController::class, "Destroy"])->name('product-destroy');
+    Route::delete("/product", [EcomController::class, "Destroy"])->name('product-destroy');
 
 
 
 
-    Route::get("/orders", [EcommerceController::class, "Orders"])->name('orders');
-    Route::get("/order-details", [EcommerceController::class, "OrderDetails"])->name('order-details');
-    Route::get("/customers", [EcommerceController::class, "Customers"])->name('customers');
-    Route::get("/shopping-cart", [EcommerceController::class, "ShoppingCart"])->name('shopping-cart');
-    Route::get("/checkout", [EcommerceController::class, "Checkout"])->name('checkout');
-    Route::get("/sellers", [EcommerceController::class, "Sellers"])->name('sellers');
-    Route::get("/seller-details", [EcommerceController::class, "SellerDetails"])->name('seller-details');
+    Route::get("/orders", [EcomController::class, "Orders"])->name('orders');
+    Route::get("/order-details", [EcomController::class, "OrderDetails"])->name('order-details');
+    Route::get("/customers", [EcomController::class, "Customers"])->name('customers');
+    Route::get("/shopping-cart", [EcomController::class, "ShoppingCart"])->name('shopping-cart');
+    Route::get("/checkout", [EcomController::class, "Checkout"])->name('checkout');
+    Route::get("/sellers", [EcomController::class, "Sellers"])->name('sellers');
+    Route::get("/seller-details", [EcomController::class, "SellerDetails"])->name('seller-details');
     
 
 
