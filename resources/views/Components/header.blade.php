@@ -4,7 +4,7 @@
       <div class="d-flex">
         <!-- LOGO -->
         <div class="navbar-brand-box horizontal-logo">
-          <a href="{{url('index.html')}}" class="logo logo-dark">
+          <a href="{{url('home')}}" class="logo logo-dark">
             <span class="logo-sm">
               <img src="{{asset('assets/images')}}/logo-sm.png" alt="" height="30" />
             </span>
@@ -13,7 +13,7 @@
             </span>
           </a>
 
-          <a href="{{url('index.html')}}" class="logo logo-light">
+          <a href="{{url('home')}}" class="logo logo-light">
             <span class="logo-sm">
               <img src="{{asset('assets/images')}}/logo-sm.png" alt="" height="30" />
             </span>
@@ -51,9 +51,9 @@
               </div>
 
               <div class="dropdown-item bg-transparent text-wrap">
-                <a href="{{url('index.html')}}" class="btn btn-soft-secondary btn-sm rounded-pill">how to setup <i
+                <a href="{{url('home')}}" class="btn btn-soft-secondary btn-sm rounded-pill">how to setup <i
                     class="mdi mdi-magnify ms-1"></i></a>
-                <a href="{{url('index.html')}}" class="btn btn-soft-secondary btn-sm rounded-pill">buttons <i
+                <a href="{{url('home')}}" class="btn btn-soft-secondary btn-sm rounded-pill">buttons <i
                     class="mdi mdi-magnify ms-1"></i></a>
               </div>
               <!-- item-->
@@ -318,7 +318,7 @@
                       class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic" />
                     <div class="flex-grow-1">
                       <h6 class="mt-0 mb-1 fs-14">
-                        <a href="apps-ecommerce-product-details.html" class="text-reset">Branded T-Shirts</a>
+                        <a href="{{url('apps-ecommerce-product-details.html')}}" class="text-reset">Branded T-Shirts</a>
                       </h6>
                       <p class="mb-0 fs-12 text-muted">
                         Quantity: <span>10 x $32</span>
@@ -343,7 +343,7 @@
                       class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic" />
                     <div class="flex-grow-1">
                       <h6 class="mt-0 mb-1 fs-14">
-                        <a href="apps-ecommerce-product-details.html" class="text-reset">Bentwood Chair</a>
+                        <a href="{{url('apps-ecommerce-product-details.html')}}" class="text-reset">Bentwood Chair</a>
                       </h6>
                       <p class="mb-0 fs-12 text-muted">
                         Quantity: <span>5 x $18</span>
@@ -368,7 +368,7 @@
                       class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic" />
                     <div class="flex-grow-1">
                       <h6 class="mt-0 mb-1 fs-14">
-                        <a href="apps-ecommerce-product-details.html" class="text-reset">
+                        <a href="{{url('apps-ecommerce-product-details.html')}}" class="text-reset">
                           Borosil Paper Cup</a>
                       </h6>
                       <p class="mb-0 fs-12 text-muted">
@@ -394,7 +394,7 @@
                       class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic" />
                     <div class="flex-grow-1">
                       <h6 class="mt-0 mb-1 fs-14">
-                        <a href="apps-ecommerce-product-details.html" class="text-reset">Gray Styled T-Shirt</a>
+                        <a href="{{url('apps-ecommerce-product-details.html')}}" class="text-reset">Gray Styled T-Shirt</a>
                       </h6>
                       <p class="mb-0 fs-12 text-muted">
                         Quantity: <span>1 x $1250</span>
@@ -419,7 +419,7 @@
                       class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic" />
                     <div class="flex-grow-1">
                       <h6 class="mt-0 mb-1 fs-14">
-                        <a href="apps-ecommerce-product-details.html" class="text-reset">Stillbird Helmet</a>
+                        <a href="{{url('apps-ecommerce-product-details.html')}}" class="text-reset">Stillbird Helmet</a>
                       </h6>
                       <p class="mb-0 fs-12 text-muted">
                         Quantity: <span>2 x $495</span>
@@ -792,44 +792,63 @@
         </div>
 <!-- Profile Section Start -->
         <div class="dropdown ms-sm-3 header-item topbar-user">
+          
+          @auth
           <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <span class="d-flex align-items-center">
               <img class="rounded-circle header-profile-user" src="{{asset('assets/images')}}/users/avatar-1.jpg"
                 alt="Header Avatar" />
               <span class="text-start ms-xl-2">
-                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Md. Mazharul Islam Sohag</span>
-                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
+                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                  @auth
+                    {{auth()->user()->name}}
+                  @endauth
+                </span>
+                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">
+                  @auth
+                    {{auth()->user()->email}}
+                  @endauth
+                </span>
               </span>
             </span>
           </button>
+          @elseguest
+          <a href="{{route('login')}}" class="btn btn-primary m-2">Login</a>
+          <a href="{{route('sign-up')}}" class="btn btn-success m-2">Register</a>
+          @endauth
+
           <div class="dropdown-menu dropdown-menu-end">
-            <!-- item-->
-            <h6 class="dropdown-header">Welcome to Sohag!</h6>
-            <a class="dropdown-item" href="pages-profile.html"><i
+            <!-- Profile-->            
+            <a class="dropdown-item" href="{{url('pages-profile.html')}}"><i
                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
-              <span class="align-middle">Profile</span></a>
-            <a class="dropdown-item" href="apps-chat.html"><i
+              <span class="align-middle">Profile</span>
+            </a>
+            <!-- Message -->
+            <a class="dropdown-item" href="{{url('apps-chat.html')}}"><i
                 class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i>
-              <span class="align-middle">Messages</span></a>
-            <a class="dropdown-item" href="apps-tasks-kanban.html"><i
-                class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i>
-              <span class="align-middle">Taskboard</span></a>
-            <a class="dropdown-item" href="pages-faqs.html"><i
-                class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i>
-              <span class="align-middle">Help</span></a>
+              <span class="align-middle">Messages</span>
+            </a>            
+            
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="pages-profile.html"><i
+            <!-- Balance -->
+            <a class="dropdown-item" href="{{url('pages-profile.html')}}"><i
                 class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i>
-              <span class="align-middle">Balance : <b>$5971.67</b></span></a>
-            <a class="dropdown-item" href="pages-profile-settings.html"><span
+              <span class="align-middle">Balance : <b>$5971.67</b></span>
+            </a>
+            <!-- Setting -->
+            <a class="dropdown-item" href="{{url('pages-profile-settings.html')}}"><span
                 class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i>
-              <span class="align-middle">Settings</span></a>
-            <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
+              <span class="align-middle">Settings</span>
+            </a>
+            <!-- Lock Screen -->
+            <a class="dropdown-item" href="{{url('auth-lockscreen-basic.html')}}"><i
                 class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i>
-              <span class="align-middle">Lock screen</span></a>
-            <a class="dropdown-item" href="auth-logout-basic.html"><i
+              <span class="align-middle">Lock screen</span>
+            </a>
+            <!-- Logout -->
+            <a class="dropdown-item" href="{{route('logout')}}"><i
                 class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
               <span class="align-middle" data-key="t-logout">Logout</span></a>
           </div>

@@ -1,5 +1,5 @@
 <html>
-@include('Layouts.head')
+@include('Components.head')
     <body>
 
     <div class="auth-page-wrapper pt-5">
@@ -38,10 +38,27 @@
                                 <div class="text-center mt-2">
                                     <h5 class="text-primary">Create New Account</h5>
                                 </div>
+                                <!-- SignUp Error Message Show -->
+                                <div class="mt-3">
+                                    @if($errors->any())
+                                        <div class="col-12">
+                                            @foreach($errors->all() as $error)
+                                                <div class="alert alert-danger">{{$error}}</div>
+                                            @endforeach
+                                        </div>
+                                    @endif
 
+                                    @if(session()->has('error'))
+                                        <div class="alert alert-danger">{{session('error')}}</div>
+                                    @endif
+
+                                    @if(session()->has('success'))
+                                        <div class="alert alert-success">{{session('success')}}</div>
+                                    @endif
+                                </div>
                                 <div class="p-2 mt-4">
                                     <!-- Form Start Here -->
-                                    <form method="POST" class="needs-validation" novalidate action="{{route('sign-up')}}" enctype="multipart/form-data">
+                                    <form method="POST" class="needs-validation" novalidate action="{{route('sign-up.post')}}" enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="mb-3">
@@ -71,7 +88,7 @@
                                             <div class="position-relative auth-pass-inputgroup">
                                                 
                                                 <!-- Password Field -->
-                                                <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                                <input name="password" type="password" class="form-control pe-5 password-input" placeholder="Enter password" aria-describedby="passwordInput" required>
                                                 
                                                 <div class="invalid-feedback">
                                                     Please enter password
@@ -114,9 +131,9 @@
             <!-- end container -->
         </div>
         <!-- end auth page content -->
-        @include('Layouts.footer')
+        @include('Components.footer')
     </div>
     <!-- JAVASCRIPT -->
-    @include('Layouts.js_scripts_links')
+    @include('Components.js_scripts_links')
 </body>
 </html>

@@ -554,7 +554,5 @@
         </div>
     </footer>
 </div>
-<!-- end main content-->
-
 
 @endsection

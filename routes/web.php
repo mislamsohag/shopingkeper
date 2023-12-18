@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\SignUpController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -47,15 +48,15 @@ Route::group(["prefix" => "admin"], function () {
     
 
 
- // Login Page
- Route::get("/login", [LoginController::class, "Login"])->name('login');
- Route::POST("/login", [LoginController::class, "LoginPost"])->name('login.post');
- 
- //SignUp Page
- Route::get("/sign-up", [SignUpController::class, "SignUP"])->name('sign-up');
- Route::POST("/sign-up", [SignUpController::class, "SignUP"])->name('sign-up');
-
-
+    // Login Page
+    Route::get("/login", [LoginController::class, "Login"])->name('login');
+    Route::POST("/login", [LoginController::class, "LoginPost"])->name('login.post');
+    
+    //SignUp Page
+    Route::get("/sign-up", [SignUpController::class, "SignUp"])->name('sign-up');
+    Route::POST("/sign-up", [SignUpController::class, "SignUpPost"])->name('sign-up.post');
+    Route::get("/logout", [LogoutController::class, "Logout"])->name('logout');
+    // Route::get("/logout", [LogoutController::class, "LogoutDestroy"])->name('logout');
 
 
    

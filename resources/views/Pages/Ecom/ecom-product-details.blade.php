@@ -672,6 +672,6 @@
         <!-- container-fluid -->
     </div>
         
-    </div>
+</div>
 @endsection
         

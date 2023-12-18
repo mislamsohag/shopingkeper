@@ -1,5 +1,5 @@
 <html>
-@include('Layouts.head')
+@include('Components.head')
     <body>
         <div class="auth-page-wrapper pt-5">
             <!-- auth page bg -->
@@ -38,9 +38,27 @@
                                     <div class="text-center mt-2">
                                         <h5 class="text-primary">Welcome Back !</h5>
                                     </div>
-                                    
-                                    <div class="p-2 mt-4">
 
+                                    <!-- Errors and Success Message Show -->
+                                    <div class="mt-3">
+                                        @if($errors->any())
+                                            <div class="col-12">
+                                                @foreach($errors->all() as $error)
+                                                    <div class="alert alert-danger">{{$error}}</div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+    
+                                        @if(session()->has('error'))
+                                            <div class="alert alert-danger">{{session('error')}}</div>
+                                        @endif
+    
+                                        @if(session()->has('success'))
+                                            <div class="alert alert-success">{{session('success')}}</div>
+                                        @endif
+                                    </div>
+
+                                    <div class="p-2 mt-4">
                                         <!-- Form Here -->
                                         <form method="POST" action="{{route('login.post')}}" enctype="multipart/form-data">
                                             @csrf
@@ -49,7 +67,7 @@
                                                 <label for="email" class="form-label">Email</label>
                                                 
                                                 <!-- Email Input -->
-                                                <input name="email" type="text" class="form-control"  placeholder="Enter username">
+                                                <input name="email" type="email" class="form-control"  placeholder="Enter username">
                                             </div>
 
                                             <div class="mb-3">
@@ -110,9 +128,9 @@
             </div>
             <!-- end auth page content -->
 
-            @include('Layouts.footer')
+            @include('Components.footer')
         </div>
         <!-- JAVASCRIPT -->
-        @include('Layouts.js_scripts_links')
+        @include('Components.js_scripts_links')
     </body>
 </html>

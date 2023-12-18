@@ -1,15 +1,15 @@
-@include('Layouts.head')
+@include('Components.head')
 <body>
     <!-- Begin page -->
     <div id="layout-wrapper">
 <!-- **************************************** -->
 
-@include('Layouts.header')
-@include('Layouts.left_sidebar')
+@include('Components.header')
+@include('Components.left_sidebar')
 
     @yield('content')
 
-@include('Layouts.footer')
+@include('Components.footer')
 
 <!-- **************************************** -->
     </div>
@@ -23,11 +23,11 @@
 
     
     <!-- Theme Settings Start -->
-    @include('Layouts.theme_setting')
+    @include('Components.theme_setting')
     <!-- Theme Settings End -->
 
      <!-- JAVASCRIPTS Links Here -->
-   @include('Layouts.js_scripts_links')
+   @include('Components.js_scripts_links')
 </body>
 
 </html>

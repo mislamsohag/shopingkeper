@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function Login(){
+        
+        if(Auth::check()){
+            return redirect(route('home'));
+        }
         return view('Pages.Auth.auth-signin-basic');
     }
 
