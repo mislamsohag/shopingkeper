@@ -29,9 +29,14 @@ Route::group(["prefix" => "admin"], function () {
         
     
     Route::get("/products", [ProductsController::class, "Products"])->name('products');
-    // Single Product Show
+    // Single Product Details Show
      Route::get("/product-details/{id}", [ProductsController::class, "ProductDetails"])->name('product.details');
-    // Single product Delete
+    // Edit Product Show
+    Route::get("/product-edit/{id}", [ProductsController::class, "ProductEditShow"])->name('product.edit');
+    // Update Product
+    Route::post("/product-update/{id}", [ProductsController::class, "ProductUpdate"])->name('product.update');
+    
+     // Single product Delete
     Route::delete("/product-destroy/{id}", [ProductsController::class, "Destroy"])->name('product.destroy');
 
 

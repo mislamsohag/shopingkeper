@@ -457,7 +457,7 @@
                                                                                     <a class="dropdown-item" href="{{route('product.details', $product->id)}}"><i
                                                                                             class="ri-eye-fill align-bottom me-2 text-muted"></i>View</a>
                                                                                 </li>
-                                                                                <li><a class="dropdown-item edit-list" data-edit-id="1" href="apps-ecommerce-add-product.html"><i
+                                                                                <li><a class="dropdown-item edit-list" data-edit-id="1" href="{{route('product.edit', $product->id)}}"><i
                                                                                             class="ri-pencil-fill align-bottom me-2 text-muted"></i>Edit</a>
                                                                                 </li>
                                                                                 <li class="dropdown-divider"></li>

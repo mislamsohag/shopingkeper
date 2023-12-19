@@ -13,7 +13,7 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                <li class="breadcrumb-item active">Product Details</li>
+                                <li class="breadcrumb-item active"><a class="btn btn-soft-primary" href="{{route('products')}}">Back to Products</a></li>
                             </ol>
                         </div>
 
@@ -99,7 +99,7 @@
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <div>
-                                                    <a href="apps-ecommerce-add-product.html" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="ri-pencil-fill align-bottom"></i></a>
+                                                    <a href="{{route('add-product')}}" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Product Add"><i class="ri-pencil-fill align-bottom"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -344,15 +344,12 @@
                                                         </table>
                                                     </div>
                                                 </div>
+
+                                                <!-- Product Details with description -->
                                                 <div class="tab-pane fade" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
                                                     <div>
                                                         <h5 class="font-size-16 mb-3">{{$product->title}}</h5>
-                                                        <p>Tommy Hilfiger men striped pink sweatshirt. Crafted
-                                                            with cotton. Material composition is 100% organic
-                                                            cotton. This is one of the world’s leading designer
-                                                            lifestyle brands and is internationally recognized
-                                                            for celebrating the essence of classic American cool
-                                                            style, featuring preppy with a twist designs.</p>
+                                                        <p>{{$product->short_desc}}</p>
                                                         <div>
                                                             <p class="mb-2"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>
                                                                 Machine Wash</p>

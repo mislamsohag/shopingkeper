@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0">Add Product</h4>
+                            <h4 class="mb-sm-0">Update Product</h4>
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
@@ -28,8 +28,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 @endif
 
-                <form method="POST" action="{{route('product-store')}}" enctype="multipart/form-data" id="createproduct-form" class="needs-validation" novalidate>
+                <form method="POST" action="{{route('product.update',$product->id)}}" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
+                    
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="card">
@@ -39,7 +40,7 @@
                                     <div class="mb-3">
                                         <label class="form-label" for="product-title-input">Product Title</label>
                                         
-                                        <input value="{{old('title')}}" name="title" type="text" class="form-control" id="product-title-input" placeholder="Enter product title" required>
+                                        <input  name="title" value="{{$product->title}}" type="text" class="form-control" id="product-title-input" placeholder="Enter product title" required>
                                         @error('title')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
@@ -48,28 +49,40 @@
                                     <div>
                                         <label>Product Description</label>
                                         <div id="ckeditor-classic">
-                                            <textarea name="short_desc" cols="50" rows="5"></textarea>
+                                            <textarea name="short_desc"  type="text" class="form-control" placeholder="Enter product decription" required>{{$product->short_desc}}</textarea>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <!-- image -->
+                            <!-- image Show and Input-->
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title mb-0">Product Image</h5>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body"> 
+                                    <div class="mb-4">
+                                        <div class="text-center">
+                                            <div class="position-relative d-inline-block">
+                                                <div class="avatar-lg">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{{asset($product->image)}}" id="product-img" class="avatar-md h-auto" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-control">
                                         <!-- Image Input -->
-                                        <input value="{{old('image')}}" name="image" type="file" multiple="multiple">
+                                        <input name="image" type="file" >
                                         @error('image')
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
                                 </div>
-                            </div>                            
-
+                            </div>
+                            
                             <!-- General Info -->
                             <div class="card">
                                 <div class="card-header">
@@ -87,12 +100,13 @@
                                         <div class="tab-pane active" id="addproduct-general-info" role="tabpanel">
                                             <div class="row">
 
-                                                <!-- categories Name -->  
+                                                <!-- categories Name -->                                              
+
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="category_id">Select Category</label>
                                                         
-                                                        <select name="category_id" class="form-control">
+                                                        <select name="category_id" value="{{$product->category_id}}" class="form-control">
                                                             <option value="1">Food</option>
                                                             <option value="2">Fashion</option>
                                                             <option value="3">Furniture</option>
@@ -112,7 +126,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="manufacturer-brand-input">Select Brand</label>
                                                         
-                                                        <select name="brand_id" class="form-control">
+                                                        <select name="brand_id" value="{{$product->brand_id}}" class="form-control">
                                                             <option value="1">Pran</option>
                                                             <option value="2">Easy</option>
                                                             <option value="3">Otobi</option>
@@ -132,7 +146,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="manufacturer-brand-input">Select Remak</label>
                                                         
-                                                        <select name="remark" class="form-control">
+                                                        <select name="remark" value="{{$product->remark}}" class="form-control">
                                                             <option value="new">New</option>
                                                             <option value="popular">Popular</option>
                                                             <option value="top">Top</option>
@@ -150,7 +164,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="stocks-input">Select Star</label>                                                        
                                                         
-                                                        <select name="star" class="form-control">
+                                                        <select name="star" value="{{$product->star}}" class="form-control">
                                                             <option value="1">One Star</option>
                                                             <option value="2">Two Star</option>
                                                             <option value="3">Three Star</option>
@@ -172,7 +186,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="manufacturer-brand-input">Product Stock</label>
                                                         
-                                                        <input value="{{old('stock')}}"  name="stock" type="text" class="form-control" id="manufacturer-brand-input" placeholder="Product Stock">
+                                                        <input name="stock" value="{{$product->stock}}" type="text" class="form-control" id="manufacturer-brand-input" placeholder="Product Stock">
                                                         @error('stock')
                                                         <p class="text-danger">{{$message}}</p>
                                                         @enderror
@@ -186,7 +200,7 @@
                                                         <div class="input-group has-validation mb-3">
                                                             <span class="input-group-text" id="product-price-addon">$</span>
                                                             
-                                                            <input name="price" type="text" class="form-control" id="product-price-input" placeholder="Enter price" aria-label="Price" aria-describedby="product-price-addon" required>
+                                                            <input name="price" value="{{$product->price}}" type="text" class="form-control" id="product-price-input" placeholder="Enter price" aria-label="Price" aria-describedby="product-price-addon" required>
                                                             @error('price')
                                                             <p class="text-danger">{{$message}}</p>
                                                             @enderror
@@ -202,7 +216,7 @@
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text" id="product-discount-addon">%</span>
                                                             
-                                                            <input name="discount" type="text" class="form-control" id="product-discount-input" placeholder="Enter discount" aria-label="discount" aria-describedby="product-discount-addon">
+                                                            <input name="discount" value="{{$product->discount}}" type="text" class="form-control" id="product-discount-input" placeholder="Enter discount" aria-label="discount" aria-describedby="product-discount-addon">
                                                             @error('discount')
                                                             <p class="text-danger">{{$message}}</p>
                                                             @enderror
@@ -216,7 +230,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="stocks-input">Discount Price</label>
                                                         
-                                                        <input name="discount_price" type="text" class="form-control" id="stocks-input" placeholder="discount price" required>
+                                                        <input name="discount_price" value="{{$product->discount_price}}" type="text" class="form-control" id="stocks-input" placeholder="discount price" required>
                                                         @error('discount_price')
                                                         <p class="text-danger">{{$message}}</p>
                                                         @enderror
@@ -227,7 +241,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- end card -->
                             <div class="text-end mb-3">
                                 <button type="submit" class="btn btn-primary w-sm">Submit</button>
                             </div>
@@ -237,4 +250,9 @@
             </div>
         </div>
     </div>
+    <!-- ckeditor -->
+    <script src="{{asset('assets/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
+
+    <!-- dropzone js -->
+    <script src="{{asset('assets/libs/dropzone/dropzone-min.js')}}"></script>
 @endsection
