@@ -466,7 +466,7 @@
                                                                                 <li class="text-center">
                                                                                     <form method="POST" action="{{route('product.destroy', $product->id )}}">
                                                                                         @csrf
-                                                                                        @method('DELETE')
+                                                                                        @method('delete')
                                                                                         <button type="submit" class="btn btn-danger ">Delete</button>
                                                                                     </form>
                                                                                 </li>

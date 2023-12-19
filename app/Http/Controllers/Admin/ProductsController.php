@@ -22,14 +22,15 @@ class ProductsController extends Controller
 
     // Single Product Details
    function ProductDetails($id){
-       /*  $product=DB::table('products')->where('id', $id)->first();
-        $imageRemome=unlink(public_path($product->image));
-        if($imageRemome){
-            DB::table('products')->where('id',$id)->delete();
-            return redirect()->back()->with('success', 'Album Deleted Successfully');
-        }
-        return redirect()->back(); */
-        return view('Pages.Ecom.ecom-product-details');
+
+      $product=DB::table('products')->where('id', $id)->first();
+      $brand=DB::table('brands')->where('id', $product->brand_id)->first();
+      $category=DB::table('categories')->where('id', $product->brand_id)->first();
+      
+      
+
+        // dd($product,$brand);
+        return view('Pages.Ecom.ecom-product-details', compact('product','brand','category'));
     } 
 
 
