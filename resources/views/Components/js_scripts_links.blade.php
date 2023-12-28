@@ -16,7 +16,10 @@
  <!--Swiper slider js-->
  <script src="{{asset('assets/libs')}}/swiper/swiper-bundle.min.js"></script>
 
- <!-- Dashboard init -->
+<!-- ecommerce product details init -->
+<script src="{{asset('assets/js')}}/pages/ecommerce-product-details.init.js"></script>
+ 
+<!-- Dashboard init -->
  <script src="{{asset('assets/js')}}/pages/dashboard-ecommerce.init.js"></script>
 
  <!-- App js -->

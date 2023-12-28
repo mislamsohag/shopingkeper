@@ -34,7 +34,7 @@
                                         <div class="swiper product-thumbnail-slider p-2 rounded bg-light">
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
-                                                    <img src="{{asset($product->image)}}" alt="" class="img-fluid d-block" />
+                                                    <img src="{{asset($product->image_1)}}" alt="" class="img-fluid d-block" />
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <img src="{{asset('assets')}}/images/products/img-6.png" alt="" class="img-fluid d-block" />
@@ -55,7 +55,7 @@
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
                                                     <div class="nav-slide-item ">
-                                                        <img src="{{asset($product->image)}}" alt="" class="img-fluid d-block" />
+                                                        <img src="{{asset($product->image_1)}}" alt="" class="img-fluid d-block" />
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
@@ -384,7 +384,11 @@
         </div>
         <!-- container-fluid -->
     </div>
-        
+         <!--start back-to-top-->
+    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+    <!--end back-to-top-->
 </div>
 @endsection
         

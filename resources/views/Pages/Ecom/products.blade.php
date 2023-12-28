@@ -36,8 +36,9 @@
                                     <h5 class="fs-16">Filters</h5>
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <a href="#" class="link-secondary text-decoration-underline" id="clearall">Clear
-                                        All</a>
+                                    <a href="#" class="link-secondary text-decoration-underline" id="clearall">
+                                        Clear All
+                                    </a>
                                 </div>
                             </div>
 
@@ -47,81 +48,25 @@
                             </div>
                         </div>
 
+                        <!-- Product Categories -->
                         <div class="accordion accordion-flush filter-accordion">
                             <div class="card-body border-bottom">
                                 <div>
                                     <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Categories</p>
                                     
                                     <ul class="list-unstyled mb-0 filter-list">
+                                        @foreach($categories as $category)
                                         <li>
                                             <a href="#" class="d-flex py-1 align-items-center">
                                                 <div class="flex-grow-1">
-                                                    <h5 class="fs-13 mb-0 listname">Grocery</h5>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="d-flex py-1 align-items-center">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-13 mb-0 listname">Fashion</h5>
+                                                    <h5 class="fs-13 mb-0 listname">{{$category->categoryName}}</h5>
                                                 </div>
                                                 <div class="flex-shrink-0 ms-2">
                                                     <span class="badge bg-light text-muted">5</span>
                                                 </div>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#" class="d-flex py-1 align-items-center">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-13 mb-0 listname">Watches</h5>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="d-flex py-1 align-items-center">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-13 mb-0 listname">Electronics</h5>
-                                                </div>
-                                                <div class="flex-shrink-0 ms-2">
-                                                    <span class="badge bg-light text-muted">5</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="d-flex py-1 align-items-center">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-13 mb-0 listname">Furniture</h5>
-                                                </div>
-                                                <div class="flex-shrink-0 ms-2">
-                                                    <span class="badge bg-light text-muted">6</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="d-flex py-1 align-items-center">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-13 mb-0 listname">Automotive Accessories</h5>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="d-flex py-1 align-items-center">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-13 mb-0 listname">Appliances</h5>
-                                                </div>
-                                                <div class="flex-shrink-0 ms-2">
-                                                    <span class="badge bg-light text-muted">7</span>
-                                                </div>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#" class="d-flex py-1 align-items-center">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-13 mb-0 listname">Kids</h5>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -131,9 +76,11 @@
 
                                 <div id="product-price-range" data-slider-color="primary"></div>
                                 <div class="formCost d-flex gap-2 align-items-center mt-3">
-                                    <input class="form-control form-control-sm" type="text" id="minCost" value="0" />
+                                    <!-- Min Price -->
+                                    <input class="form-control form-control-sm" type="text" id="minCost" value="$ {{$minPrice}}" />
+                                    <!-- Max Price -->
                                     <span class="fw-semibold text-muted">to</span> <input
-                                        class="form-control form-control-sm" type="text" id="maxCost" value="1000" />
+                                        class="form-control form-control-sm" type="text" id="maxCost" value="$ {{$maxPrice}}" />
                                 </div>
                             </div>
 
@@ -156,31 +103,13 @@
                                             <i class="ri-search-line search-icon"></i>
                                         </div>
                                         <div class="d-flex flex-column gap-2 mt-3 filter-check">
+                                            @foreach($brands as $brand)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Boat"
-                                                    id="productBrandRadio5" checked>
-                                                <label class="form-check-label" for="productBrandRadio5">Boat</label>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="productBrandRadio5">
+                                                <label class="form-check-label" for="productBrandRadio5">{{$brand->brand_name}}</label>
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="OnePlus"
-                                                    id="productBrandRadio4">
-                                                <label class="form-check-label" for="productBrandRadio4">OnePlus</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Realme"
-                                                    id="productBrandRadio3">
-                                                <label class="form-check-label" for="productBrandRadio3">Realme</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Sony"
-                                                    id="productBrandRadio2">
-                                                <label class="form-check-label" for="productBrandRadio2">Sony</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="JBL"
-                                                    id="productBrandRadio1" checked>
-                                                <label class="form-check-label" for="productBrandRadio1">JBL</label>
-                                            </div>
+                                            @endforeach                                           
 
                                             <div>
                                                 <button type="button"
@@ -416,7 +345,7 @@
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="flex-shrink-0 me-3">
                                                                                 <div class="avatar-sm bg-light rounded p-1">
-                                                                                    <img src="{{asset($product->image)}}"
+                                                                                    <img src="{{asset($product->image_1)}}"
                                                                                         alt="" class="img-fluid d-block">
                                                                                 </div>
                                                                             </div>

@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('title',200);
+            $table->string('title');
             $table->string('short_desc',500);
-            $table->string('price',20);
-            $table->boolean('discount');
-            $table->string('discount_price', 20);
-            $table->string('image', 200);
-            $table->boolean('stock');
-            $table->float('star');
+            $table->integer('price',20);
+            $table->integer('discount',20);
+            $table->integer('discount_price', 20);
+            $table->string('image_1');
+            $table->string('image_2')->nullable();
+            $table->string('image_3')->nullable();
+            $table->string('image_4')->nullable();
+            $table->integer('stock');
+            $table->integer('star');
             $table->enum('remark', ['popular', 'new', 'top', 'special', 'tranding', 'regular']);
 
             //F-key
