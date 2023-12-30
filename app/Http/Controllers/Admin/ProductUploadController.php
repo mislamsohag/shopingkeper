@@ -21,16 +21,14 @@ class ProductUploadController extends Controller
 
         // dd($request->all()); 
         
-        $request->validate([                      
+         $this->validate($request,[                      
             'title'=>'required|string',
             'short_desc'=>'nullable|string',
             'price'=>'required',
             'discount'=>'nullable',
             'discount_price'=>'nullable',
-            'image_1'=>'image|mimes:png,jpg,jpeg,svg,gif',
-            'image_2'=>'nullable|image|mimes:png,jpg,jpeg,svg,gif',
-            'image_3'=>'nullable|image|mimes:png,jpg,jpeg,svg,gif',
-            'image_4'=>'nullable|image|mimes:png,jpg,jpeg,svg,gif',
+            // 'images'=>'required',
+            'image'=>'image|mimes:png,jpg,jpeg,svg,gif|max:2024',            
             'stock'=>'required',
             'color'=>'required|array',            
             'size'=>'required|array',
@@ -38,10 +36,17 @@ class ProductUploadController extends Controller
         ]);
     
         // Image Upload
-         if($request->hasFile('image_1')){
-            $image=$request->file('image_1');
-            $fileNameToStore='image-'.md5(uniqid()).time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('assets/images/products'),$fileNameToStore);
+         if($request->hasFile('image')){
+            $image=$request->file('image');
+            
+                $fileNameToStore='image-'.md5(uniqid()).time().'.'.$image->getClientOriginalExtension();
+                $image->move(public_path('assets/images/products'),$fileNameToStore);
+            
+            /* foreach($images as $image){
+                $fileNameToStore='image-'.md5(uniqid()).time().'.'.$image->getClientOriginalExtension();
+                $image->move(public_path('assets/images/products'),$fileNameToStore);
+            } */  
+            
         }
     
         //Save Data to Album table
@@ -51,10 +56,8 @@ class ProductUploadController extends Controller
             'price'=>$request->price,
             'discount'=>$request->discount,
             'discount_price'=>$request->discount_price,
-            'image_1'=>'assets/images/products/'.$fileNameToStore,
-            'image_2'=>'assets/images/products/'.$fileNameToStore,
-            'image_3'=>'assets/images/products/'.$fileNameToStore,
-            'image_4'=>'assets/images/products/'.$fileNameToStore,
+            'image'=>'assets/images/products/'.$fileNameToStore,
+            // 'images'=>$request->image,
             'stock'=>$request->stock,
             'sizes'=>$request->sizes,
             'colors'=>$request->colors,

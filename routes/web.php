@@ -20,7 +20,8 @@ Route::group(["prefix" => "admin"], function () {
     Route::get("/analytics", [DashboardController::class, "DashboardAnalytics"])->name('dashboard.analytics'); 
 
 
-
+    // Add Brands
+    Route::view('/brand-add', 'Pages.Ecom.add-brand');
 
     //Ecommarce Rotues
     Route::get("/add-product", [ProductUploadController::class, "AddProductShow"])->name('add-product');    

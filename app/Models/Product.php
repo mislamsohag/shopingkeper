@@ -14,22 +14,21 @@ class Product extends Model
         'price',
         'discount',
         'discount_price',
-        'image_1',
-        'image_2',
-        'image_3',
-        'image_4',
+        'image',
+        // 'images',
         'stock',
         'star',
         'remark',
-        'sizes',
-        'colors',
+        // 'sizes',
+        // 'colors',
         'category_id',
         'brand_id',
     ];
 
     protected $casts=[
-        'sizes'=>'array',
-        'colors'=>'array',
+        // 'sizes'=>'array',
+        // 'colors'=>'array',       
+        // 'images'=>'array',       
     ];
    
 }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('title',300);
-            $table->string('image',200);
+            $table->string('slider_title',300);
+            $table->string('slider_image',200);
             //F-key
             $table->unsignedBigInteger('product_id')->unique()->nullable();
             //Relation

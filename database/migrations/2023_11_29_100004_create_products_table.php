@@ -15,20 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('short_desc',500);
-            $table->integer('price',20);
-            $table->integer('discount',20);
-            $table->integer('discount_price', 20);
-            $table->string('image_1');
-            $table->string('image_2')->nullable();
-            $table->string('image_3')->nullable();
-            $table->string('image_4')->nullable();
+            $table->integer('price');
+            $table->integer('discount');
+            $table->integer('discount_price');
+            $table->string('image');
             $table->integer('stock');
             $table->integer('star');
             $table->enum('remark', ['popular', 'new', 'top', 'special', 'tranding', 'regular']);
 
             //F-key
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('brand_id');
 
             //Relation
             $table->foreign('category_id')->references('id')->on('categories')->restrictOnDelete()->cascadeOnUpdate();
